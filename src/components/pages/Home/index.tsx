@@ -1,22 +1,11 @@
-import { gql, useQuery } from "@apollo/client";
+import { useGetHistoriesQuery } from "graphql/generated/schema";
+
 import { BasicTemplate } from "../../templates/BasicTemplate";
 
-export const LOAD_CURRENCY_INFO = gql`
-  {
-    Page {
-      media {
-        siteUrl
-        title {
-          english
-          native
-        }
-        description
-      }
-    }
-  }
-`;
-
 export default function Home() {
-  useQuery(LOAD_CURRENCY_INFO);
-  return <BasicTemplate>하이</BasicTemplate>;
+  const { data, loading } = useGetHistoriesQuery();
+
+  if (loading) return <div>로딩중</div>;
+
+  return <BasicTemplate>{data?.histories![0]?.id}</BasicTemplate>;
 }

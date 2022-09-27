@@ -1,0 +1,5 @@
+query getHistories($find: HistoryFind) {
+  histories(find: $find) {
+    id
+  }
+}

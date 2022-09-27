@@ -8,7 +8,7 @@ interface Props {
 
 export const GraphQLClientProvider = ({ children }: Props) => {
   const client = new ApolloClient({
-    uri: "https://graphql.anilist.co/",
+    uri: "https://api.spacex.land/graphql/",
     cache,
   });
 
